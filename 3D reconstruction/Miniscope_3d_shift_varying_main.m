@@ -64,8 +64,8 @@ if strcmpi(fext,'.tif')
     file_info = parse_json(meta_path);
     bg_info = parse_json(bg_meta_path);
 
-    params.data_format = file_info.FrameKey_0_0_0.x50890959_DataFormat;
-    params.bg_format = bg_info.FrameKey_0_0_0.x50890959_DataFormat;
+    params.data_format = file_info.FrameKey_0_0_0.x29981158_DataFormat;
+    params.bg_format = bg_info.FrameKey_0_0_0.x29981158_DataFormat;
     params.ds_raw = file_info.FrameKey_0_0_0.Binning;
     params.ds_bg = bg_info.FrameKey_0_0_0.Binning;
 elseif strcmpi(fext,'.mat')
@@ -130,8 +130,8 @@ params.bg_info = bg_info;
     
     % Make sure h and weights are in order y,x,z,rank
     fprintf('permuting PSF data\n')
-    h = permute(h_in.comps_out(:,:,1:params.rank,params.z_range),[1,2,4,3]);
-    weights = permute(weights_in.weights_out(:,:,1:params.rank,params.z_range),[1,2,4,3]);
+    h = permute(h_in.h(:,:,1:params.rank,params.z_range),[1,2,4,3]);
+    weights = permute(weights_in.weights(:,:,1:params.rank,params.z_range),[1,2,4,3]);
     fprintf('Done permuting. Resampling PSF\n');
     
     %clear h_in;
